@@ -4,6 +4,7 @@ pg.init()
 #objs
 import data
 import random
+from os import path
 from data import settings as stg
 from button import Button
 from text_box import TextBox
@@ -26,7 +27,7 @@ CURRENT_WORKOUT_PANEL = None
 
 # OBJs
 images = {
-    'title': Image('title', 'Images\Title.png', (WIDTH // 2, 100), 0.5)
+    'title': Image('title', path.join('Images', 'Title.png'), (WIDTH // 2, 100), 0.5)
 }
 data_buttons = {
     'edit1': Button('edit1', (WIDTH / 2 - 200, 820), width=50, height=25, text='Edit', text_col=pg.Color(0,123,50), hover_col=(0,123,123), font_size=24, col=pg.Color(210,210,210), active=False, visible=False),
@@ -49,15 +50,15 @@ texts = {
     'prompt': Text('prompt', (WIDTH/2, 1200), stg['text_font'], 18, pg.Color(255,255 ,255), 'What is your name and address?', AA=True)
 }
 panels = {
-    'calorie_panel_1': Panel('calorie_panel_1', (100, 450), border_radius=20, img_name='Images\Calorie.webp', text=f'Calories: {TOTAL_CALORIES}', text_col=pg.Color(14,144,14), font_size=27),
-    'minute_panel_1': Panel('minute_panel_1', (292.2, 450), border_radius=20, img_name='Images\clock.png', text=f'Minutes: {TOTAL_MINUTES}', text_col=pg.Color(14,144,14), font_size=27),
-    'avg_minute_panel_1': Panel('avg_minute_panel_1', (484.4, 450), border_radius=20, img_name='Images\clock.png', text=f'Average Time: {AVG_MINUTES} min', text_col=pg.Color(14,144,14), font_size=15),
+    'calorie_panel_1': Panel('calorie_panel_1', (100, 450), border_radius=20, img_name=path.join('Images', 'clock.png'), text=f'Calories: {TOTAL_CALORIES}', text_col=pg.Color(14,144,14), font_size=27),
+    'minute_panel_1': Panel('minute_panel_1', (292.2, 450), border_radius=20, img_name=path.join('Images', 'clock.png'), text=f'Minutes: {TOTAL_MINUTES}', text_col=pg.Color(14,144,14), font_size=27),
+    'avg_minute_panel_1': Panel('avg_minute_panel_1', (484.4, 450), border_radius=20, img_name=path.join('Images', 'clock.png'), text=f'Average Time: {AVG_MINUTES} min', text_col=pg.Color(14,144,14), font_size=15),
     'day_display': Panel('day_display', (WIDTH / 2, 845), width=WIDTH-60, height=400, border_radius=45, text=f'{CURRENT_DAY_VIEW}\nTotal Calories Burnt: {data.days[CURRENT_DAY_VIEW].calories}\nTotal Minutes Worked Out: {data.days[CURRENT_DAY_VIEW].minutes}\nExercises Done: {data.days[CURRENT_DAY_VIEW].exercises}', font_size=40, visible=False)
 }
 workout_panels = {
-    'push_up_panel': Panel('push_up_panel', (WIDTH/2, 890), width=300, height=300, border_radius = 30, font_size=26, img_name='Images\push-up.jpg', text=f'PUSH UP:\n1. Place hands on ground\n2. Bend arms 1/2pi radians.\n3. Fully extend back up.', visible=False),
-    'pull_up_panel': Panel('pull_up_panel', (WIDTH/2, 890), width=300, height=300, border_radius = 30, font_size=26, img_name='Images\pull-up.webp', text=f'PULL UP:\n1. Get bar.\n2. Grab bar. \n3. Pull up and down.', visible=False),
-    'sit_up_panel': Panel('sit_up_panel', (WIDTH/2, 890), width=300, height=300, border_radius = 30, font_size=26, img_name='Images\sit-upjpeg.jpeg', text=f'SIT UP:\n1. Lay down with legs bent. \n2. Sit up.\n3. Repeat.', visible=False)
+    'push_up_panel': Panel('push_up_panel', (WIDTH/2, 890), width=300, height=300, border_radius = 30, font_size=26, img_name=path.join('Images', 'push-up.jpg'), text=f'PUSH UP:\n1. Place hands on ground\n2. Bend arms 1/2pi radians.\n3. Fully extend back up.', visible=False),
+    'pull_up_panel': Panel('pull_up_panel', (WIDTH/2, 890), width=300, height=300, border_radius = 30, font_size=26, img_name=path.join('Images', 'pull-up.webp'), text=f'PULL UP:\n1. Get bar.\n2. Grab bar. \n3. Pull up and down.', visible=False),
+    'sit_up_panel': Panel('sit_up_panel', (WIDTH/2, 890), width=300, height=300, border_radius = 30, font_size=26, img_name=path.join('Images', 'sit-upjpeg.jpeg'), text=f'SIT UP:\n1. Lay down with legs bent. \n2. Sit up.\n3. Repeat.', visible=False)
 }
 panels.update(workout_panels)
 calendar_panels = {}
