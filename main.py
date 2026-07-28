@@ -130,6 +130,7 @@ if __name__ == '__main__':
     running = True
     clock = pg.time.Clock()
     
+    day_is_open = False
     DISPLAYSURF = pg.display.set_mode((WIDTH, HEIGHT))
     while running:
         for event in pg.event.get():
@@ -153,9 +154,12 @@ if __name__ == '__main__':
                         panels['day_display'].visible = True
                         for button in data_buttons.values():
                             button.visible, button.active = True, True
-                        shiftElements('down', True, panels['day_display'].pos[1] - 200, 400, exclude=[panels['day_display'], buttons['edit1'], buttons['edit2'], buttons['edit3'], text_boxes['tbox1'], text_boxes['tbox2'], text_boxes['tbox3']])
+                        if not day_is_open:
+                            shiftElements('down', True, panels['day_display'].pos[1] - 200, 400, exclude=[panels['day_display'], buttons['edit1'], buttons['edit2'], buttons['edit3'], text_boxes['tbox1'], text_boxes['tbox2'], text_boxes['tbox3']])
+                            day_is_open = True
                     else:
                         CURRENT_DAY_VIEW = None
+                        day_is_open = False
                         panels['day_display'].visible = False
                         for button in data_buttons.values():
                             button.visible, button.active = False, False
